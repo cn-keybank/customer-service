@@ -1,5 +1,7 @@
 package com.ewolff.microservice.customer.web;
 
+import java.math.BigInteger;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +26,7 @@ public class CustomerController {
 	}
 
 	@RequestMapping(value = "/{id}.html", method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE)
-	public ModelAndView customer(@PathVariable("id") long id) {
+	public ModelAndView customer(@PathVariable("id") BigInteger id) {
 		return new ModelAndView("customer", "customer",
 				customerRepository.findById(id).get());
 	}
@@ -47,7 +49,7 @@ public class CustomerController {
 	}
 
 	@RequestMapping(value = "/{id}.html", method = RequestMethod.PUT)
-	public ModelAndView put(@PathVariable("id") long id, Customer customer,
+	public ModelAndView put(@PathVariable("id") BigInteger id, Customer customer,
 			HttpServletRequest httpRequest) {
 		customer.setId(id);
 		customerRepository.save(customer);
@@ -55,7 +57,7 @@ public class CustomerController {
 	}
 
 	@RequestMapping(value = "/{id}.html", method = RequestMethod.DELETE)
-	public ModelAndView delete(@PathVariable("id") long id) {
+	public ModelAndView delete(@PathVariable("id") BigInteger id) {
 		customerRepository.deleteById(id);
 		return new ModelAndView("success");
 	}

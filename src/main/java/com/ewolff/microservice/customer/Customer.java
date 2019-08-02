@@ -1,5 +1,7 @@
 package com.ewolff.microservice.customer;
 
+import java.math.BigInteger;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,7 +17,7 @@ public class Customer {
 
 	@Id
 	@GeneratedValue
-	private Long id;
+	private BigInteger id;
 
 	@Column(nullable = false)
 	private String name;
@@ -35,7 +37,6 @@ public class Customer {
 
 	public Customer() {
 		super();
-		id = 0l;
 	}
 
 	public Customer(String firstname, String name, String email, String street,
@@ -72,11 +73,11 @@ public class Customer {
 		this.firstname = firstname;
 	}
 
-	public Long getId() {
+	public BigInteger getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(BigInteger id) {
 		this.id = id;
 	}
 
