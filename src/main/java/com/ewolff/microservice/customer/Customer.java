@@ -5,6 +5,7 @@ import java.math.BigInteger;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
 
@@ -16,8 +17,8 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 public class Customer {
 
 	@Id
-	@GeneratedValue
-	private BigInteger id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private String id;
 
 	@Column(nullable = false)
 	private String name;
@@ -73,11 +74,11 @@ public class Customer {
 		this.firstname = firstname;
 	}
 
-	public BigInteger getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(BigInteger id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
